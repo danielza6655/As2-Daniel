@@ -1,0 +1,17 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <label for="email" appLargeText>Email:</label>
+    <input id="email" formControlName="email">
+    <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+      <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required. -- This reverse is pipe --> {{'Email is required.' | myCustom}} </div>
+      <div *ngIf="loginForm.get('email')?.errors?.['email']">Email is invalid. -- This reverse is pipe --> {{'Email is invalid.' | myCustom}}</div>
+    </div>
+    <label for="password" appLargeText>Password:</label>
+    <input id="password" type="password" formControlName="password">
+    <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+      <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required. -- This reverse is pipe --> {{'Password is required.' | myCustom}}</div>
+      <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters. -- This reverse is pipe --> {{'Password must be at least 6 characters.' | myCustom}}</div>
+      <div *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password must be less than 20 characters. -- This reverse is pipe --> {{'Password must be less than 20 characters.' | myCustom}}</div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>

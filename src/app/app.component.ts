@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { DemographicComponent } from './demographic/demographic.component';
+import { LargeTextDirective } from './my-attribute.directive';
+import { MyIfDirective } from './my-structural.directive';
+import { MyCustomPipe } from './my-pipe.pipe';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [
+    LoginComponent,
+    DemographicComponent,
+    LargeTextDirective,
+    MyIfDirective,
+    MyCustomPipe
+  ]
 })
 export class AppComponent {
-  title = 'as2';
+  showText = false;
 }

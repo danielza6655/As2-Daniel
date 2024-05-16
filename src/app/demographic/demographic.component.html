@@ -1,0 +1,28 @@
+<form [formGroup]="demographicForm" (ngSubmit)="onSubmit()">
+  <label for="firstName">First Name:</label>
+  <input id="firstName" formControlName="firstName">
+  <div *ngIf="demographicForm.get('firstName')?.invalid && (demographicForm.get('firstName')?.dirty || demographicForm.get('firstName')?.touched)">
+    <div *ngIf="demographicForm.get('firstName')?.errors?.['required']">First name is required.</div>
+  </div>
+
+  <label for="lastName">Last Name:</label>
+  <input id="lastName" formControlName="lastName">
+  <div *ngIf="demographicForm.get('lastName')?.invalid && (demographicForm.get('lastName')?.dirty || demographicForm.get('lastName')?.touched)">
+    <div *ngIf="demographicForm.get('lastName')?.errors?.['required']">Last name is required.</div>
+  </div>
+
+  <label for="birthDate">Birth Date:</label>
+  <input id="birthDate" type="date" formControlName="birthDate">
+  <div *ngIf="demographicForm.get('birthDate')?.invalid && (demographicForm.get('birthDate')?.dirty || demographicForm.get('birthDate')?.touched)">
+    <div *ngIf="demographicForm.get('birthDate')?.errors?.['required']">Birth date is required.</div>
+  </div>
+
+  <label for="age">Age:</label>
+  <input id="age" type="number" formControlName="age">
+  <div *ngIf="demographicForm.get('age')?.invalid && (demographicForm.get('age')?.dirty || demographicForm.get('age')?.touched)">
+    <div *ngIf="demographicForm.get('age')?.errors?.['required']">Age is required.</div>
+    <div *ngIf="demographicForm.get('age')?.errors?.['min']">Age must be a positive number.</div>
+  </div>
+
+  <button type="submit" [disabled]="demographicForm.invalid">Submit</button>
+</form>
